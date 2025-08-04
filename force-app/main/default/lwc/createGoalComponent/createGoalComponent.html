@@ -1,7 +1,6 @@
 <template>
   <lightning-card title="Create Goal" icon-name="custom:custom14">
     <div class="slds-m-around_medium">
-      <!-- Goal Name input -->
       <lightning-input
         label="Goal Name"
         name="Name"
@@ -9,7 +8,6 @@
         value={Name}
       ></lightning-input>
 
-      <!-- Description input -->
       <lightning-input
         label="Description"
         name="Description"
@@ -17,7 +15,6 @@
         value={Description}
       ></lightning-input>
 
-      <!-- Target Date input -->
       <lightning-input
         label="Target Date"
         type="date"
@@ -26,7 +23,6 @@
         value={Date}
       ></lightning-input>
 
-      <!-- Status combobox -->
       <lightning-combobox
         label="Status"
         placeholder="Select Status"
@@ -36,7 +32,6 @@
         onchange={handleOnChange}
       ></lightning-combobox>
 
-      <!-- Submit button -->
       <lightning-button
         label="Submit Goal"
         onclick={handleSubmit}
@@ -45,12 +40,10 @@
       </lightning-button>
     </div>
 
-    <!-- Error Message -->
     <template if:true={error}>
       <div class="slds-text-color_error">{error}</div>
     </template>
 
-    <!-- Success Message -->
     <template if:true={data}>
       <div class="slds-text-color_success">Goal created successfully!</div>
     </template>

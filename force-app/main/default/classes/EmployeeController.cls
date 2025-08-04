@@ -80,7 +80,7 @@ public with sharing class EmployeeController {
                 Employee__c = EmpId
             );
             insert newGoal;
-            return newGoal; // Ensure this is being returned successfully
+            return newGoal;
         } catch (Exception e) {
             throw new AuraHandledException('Error creating goal: ' + e.getMessage());
         }
