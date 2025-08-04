@@ -68,5 +68,23 @@ public with sharing class EmployeeController {
         }
  
     }
+
+    @AuraEnabled
+    public static Goal__c createGoalForEmployee(String Name, String Description, Date targetDate, String Status, Id EmpId) {
+        try {
+            Goal__c newGoal = new Goal__c(
+                Name = Name,
+                Description__c = Description,
+                Target_Date__c = targetDate,
+                Status__c = Status,
+                Employee__c = EmpId
+            );
+            insert newGoal;
+            return newGoal; // Ensure this is being returned successfully
+        } catch (Exception e) {
+            throw new AuraHandledException('Error creating goal: ' + e.getMessage());
+        }
+    }
+    
  
 }

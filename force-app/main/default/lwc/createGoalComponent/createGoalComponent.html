@@ -1,0 +1,58 @@
+<template>
+  <lightning-card title="Create Goal" icon-name="custom:custom14">
+    <div class="slds-m-around_medium">
+      <!-- Goal Name input -->
+      <lightning-input
+        label="Goal Name"
+        name="Name"
+        onchange={handleOnChange}
+        value={Name}
+      ></lightning-input>
+
+      <!-- Description input -->
+      <lightning-input
+        label="Description"
+        name="Description"
+        onchange={handleOnChange}
+        value={Description}
+      ></lightning-input>
+
+      <!-- Target Date input -->
+      <lightning-input
+        label="Target Date"
+        type="date"
+        name="Date"
+        onchange={handleOnChange}
+        value={Date}
+      ></lightning-input>
+
+      <!-- Status combobox -->
+      <lightning-combobox
+        label="Status"
+        placeholder="Select Status"
+        name="selectedStatus"
+        options={statusOptions}
+        value={selectedStatus}
+        onchange={handleOnChange}
+      ></lightning-combobox>
+
+      <!-- Submit button -->
+      <lightning-button
+        label="Submit Goal"
+        onclick={handleSubmit}
+        variant="brand"
+      >
+      </lightning-button>
+    </div>
+
+    <!-- Error Message -->
+    <template if:true={error}>
+      <div class="slds-text-color_error">{error}</div>
+    </template>
+
+    <!-- Success Message -->
+    <template if:true={data}>
+      <div class="slds-text-color_success">Goal created successfully!</div>
+    </template>
+  </lightning-card>
+</template>
