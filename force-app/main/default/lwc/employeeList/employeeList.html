@@ -1,0 +1,25 @@
+<template>
+  <lightning-card title="Employee Directory" icon-name="standard:account">
+    <div class="slds-p-around_medium">
+      <template if:true={employees}>
+        <div class="slds-grid slds-gutters slds-wrap">
+          <template for:each={employees} for:item="employee">
+            <div
+              key={employee.Id}
+              class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2"
+            >
+              <div class="employee-card">
+                <h3 class="slds-text-title_bold">{employee.Name}</h3>
+                <p class="slds-text-body_small"><strong>ID: </strong>{employee.Employee_ID__c}</p>
+                <p class="slds-text-body_small"><strong>Department: </strong>{employee.Department__c}</p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+      <template if:false={employees}>
+        <p>No Data Obtained</p>
+      </template>
+    </div>
+  </lightning-card>
+</template>

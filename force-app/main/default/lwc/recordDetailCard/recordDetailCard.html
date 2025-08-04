@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Fast Details" icon-name="standard:contact">
+        <div class="slds-p-around_medium" style="background: rgba(5, 7, 9, 1); color: white;">
+            <template if:true={employee}>
+                <h3 style="font-size: large;">{employee.Name}</h3>
+                <p><strong>ID: {employee.Employee_ID__c}</strong></p>
+                <p><strong>Department: {employee.Department__c}</strong></p>
+            </template>
+            <template if:false={employee}>
+                <h3 style="font-size: large;">No Data</h3>
+            </template>
+        </div>
+    </lightning-card>
+</template>

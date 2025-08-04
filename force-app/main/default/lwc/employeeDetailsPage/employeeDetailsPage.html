@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Employee Detail" icon-name="standard:account">
+      <div class="slds-p-around_medium">
+        <template if:true={employee}>
+          <div class="slds-m-bottom_medium">
+            <h3 class="slds-text-title_bold">{employee.Name}</h3>
+            <p class="slds-text-body_small"><strong>Id:</strong> {employee.Employee_ID__c}</p>
+            <p class="slds-text-body_small"><strong>Dept:</strong> {employee.Department__c}</p>
+            <p class="slds-text-body_small"><strong>Job Role:</strong> {employee.Job_Role__c}</p>
+            <p class="slds-text-body_small"><strong>Email:</strong> {employee.Email__c}</p>
+            <p class="slds-text-body_small"><strong>Region:</strong> {employee.Region__c}</p>
+            <p class="slds-text-body_small"><strong>Hire-Date:</strong> {employee.Hire_Date__c}</p>
+            <p class="slds-text-body_small"><strong>Salary:</strong> {employee.Salary__c}</p>
+          </div>
+        </template>
+  
+        <!-- Performance Reviews Section -->
+        <template if:true={reviews}>
+          <div class="slds-m-top_medium">
+            <h3 class="slds-text-title_bold">Performance Reviews</h3>
+            <template for:each={reviews} for:item="review">
+              <div key={review.Id} class="slds-box slds-box_xx-small slds-m-bottom_x-small">
+                <p><strong>Name:</strong> {review.Name}</p>
+                <p><strong>Review Period:</strong> {review.Review_Period__c}</p>
+                <p><strong>Rating:</strong> {review.Rating__c}</p>
+              </div>
+            </template>
+          </div>
+        </template>
+  
+        <!-- Career Plans Section -->
+        <template if:true={plans}>
+          <div class="slds-m-top_medium">
+            <h3 class="slds-text-title_bold">Career Plans</h3>
+            <template for:each={plans} for:item="plan">
+              <div key={plan.Id} class="slds-box slds-box_xx-small slds-m-bottom_x-small">
+                <p><strong>Name:</strong> {plan.Name}</p>
+                <p><strong>Target Role:</strong> {plan.Target_Role__c}</p>
+                <p><strong>Status:</strong> {plan.Status__c}</p>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </lightning-card>
+  </template>
+  

@@ -1,0 +1,12 @@
+.employee-card {
+    background: peachpuff;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.employee-card:hover {
+    border-color: pink;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
