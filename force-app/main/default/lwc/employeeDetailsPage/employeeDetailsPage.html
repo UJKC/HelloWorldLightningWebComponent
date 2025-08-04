@@ -1,6 +1,6 @@
 <template>
     <lightning-card title="Employee Detail" icon-name="standard:account">
-      <div class="slds-p-around_medium">
+      <div class="slds-p-around_medium employee-card">
         <template if:true={employee}>
           <div class="slds-m-bottom_medium">
             <h3 class="slds-text-title_bold">{employee.Name}</h3>
@@ -19,7 +19,7 @@
           <div class="slds-m-top_medium">
             <h3 class="slds-text-title_bold">Performance Reviews</h3>
             <template for:each={reviews} for:item="review">
-              <div key={review.Id} class="slds-box slds-box_xx-small slds-m-bottom_x-small">
+              <div key={review.Id} class="slds-box slds-box_xx-small slds-m-bottom_x-small employee-card" onclick={handleReviewClick} data-id={review.Id}>
                 <p><strong>Name:</strong> {review.Name}</p>
                 <p><strong>Review Period:</strong> {review.Review_Period__c}</p>
                 <p><strong>Rating:</strong> {review.Rating__c}</p>
@@ -33,7 +33,7 @@
           <div class="slds-m-top_medium">
             <h3 class="slds-text-title_bold">Career Plans</h3>
             <template for:each={plans} for:item="plan">
-              <div key={plan.Id} class="slds-box slds-box_xx-small slds-m-bottom_x-small">
+              <div key={plan.Id} class="slds-box slds-box_xx-small slds-m-bottom_x-small employee-card" onclick={handlePlanClick} data-id={plan.Id}>
                 <p><strong>Name:</strong> {plan.Name}</p>
                 <p><strong>Target Role:</strong> {plan.Target_Role__c}</p>
                 <p><strong>Status:</strong> {plan.Status__c}</p>

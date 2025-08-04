@@ -1,12 +1,12 @@
-import { LightningElement,track,wire,api } from 'lwc';
+import { LightningElement, track, wire, api } from 'lwc';
 
 import getEmployeeDetails from '@salesforce/apex/EmployeeController.getEmployeeDetails';
 
-import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-import {NavigationMixin} from 'lightning/navigation';
- 
-export default class EmployeeDetailsPage extends NavigationMixin (LightningElement) {
+import { NavigationMixin } from 'lightning/navigation';
+
+export default class EmployeeDetailsPage extends NavigationMixin(LightningElement) {
 
     @track employee;
 
@@ -18,37 +18,37 @@ export default class EmployeeDetailsPage extends NavigationMixin (LightningEleme
 
     @track reviews;
 
-    @wire(getEmployeeDetails,{employeeId:'$recordId'})
+    @wire(getEmployeeDetails, { employeeId: '$recordId' })
 
-    wiredEmployeeDetails({error,data}){
+    wiredEmployeeDetails({ error, data }) {
 
-        if(data){
+        if (data) {
 
-            this.employee=data.employee;
+            this.employee = data.employee;
 
-            this.reviews=data.reviews;
+            this.reviews = data.reviews;
 
-            this.plans=data.plans;
+            this.plans = data.plans;
 
-            this.error=undefined;
+            this.error = undefined;
 
         }
 
-        else if(error){
+        else if (error) {
 
-            this.error=error.body.message;
+            this.error = error.body.message;
 
-            this.reviews=undefined;
+            this.reviews = undefined;
 
-            this.employee=undefined;
+            this.employee = undefined;
 
-            this.plans=undefined;
+            this.plans = undefined;
 
             this.dispatchEvent(new ShowToastEvent({
 
-                title:'Error Leading Employee',
+                title: 'Error Leading Employee',
 
-                message:this.error,variant:'error'
+                message: this.error, variant: 'error'
 
             }));
 
@@ -56,7 +56,25 @@ export default class EmployeeDetailsPage extends NavigationMixin (LightningEleme
 
     }
 
-    
+    handleReviewClick(event) {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: event.currentTarget.dataset.id,
+                objectApiName: 'Performance_Review__c',
+                actionName: 'view'
+            }
+        })
+    }
 
+    handlePlanClick(event) {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: event.currentTarget.dataset.id,
+                objectApiName: 'Career_Plan__c',
+                actionName: 'view'
+            }
+        })
+    }
 }
- 
