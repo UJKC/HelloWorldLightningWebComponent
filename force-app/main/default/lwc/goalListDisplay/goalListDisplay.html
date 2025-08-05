@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Related Goal">
+        <template if:true={Goal}>
+            <template for:each={Goal} for:item="GoalItem">
+                <div key={GoalItem.Id} class="slds-box slds-box_xx-small slds-m-around_x-small" style="background:gold; border-color: grey;">
+                    <div data-id={GoalItem.Id} onclick={handleGoalClick}>
+                        <h3>{GoalItem.Name}</h3>
+                        <p><strong>Status:</strong> {GoalItem.Status__c}</p>
+                        <p><strong>Target Date:</strong> {GoalItem.Target_Date__c}</p>
+                    </div>
+
+                </div>
+            </template>
+        </template>
+        <template if:false={Goal}>
+            <p class="slds-p-around_medium">No goals found.</p>
+        </template>
+
+        <template if:true={error}>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </lightning-card>
+</template>

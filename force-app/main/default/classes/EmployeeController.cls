@@ -69,7 +69,7 @@ public with sharing class EmployeeController {
  
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable = true)
     public static Goal__c createGoalForEmployee(String Name, String Description, Date targetDate, String Status, Id EmpId) {
         try {
             Goal__c newGoal = new Goal__c(
@@ -86,5 +86,14 @@ public with sharing class EmployeeController {
         }
     }
     
- 
+    @AuraEnabled(cacheable = true)
+    public static List<Goal__c> GetGoalsByEmpId(String empId) {
+        try {
+            list<Goal__c> goals = [SELECT Employee__c, Name, Status__c, Target_Date__c FROM Goal__c WHERE Employee__c = :empId];
+            return goals;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
 }
