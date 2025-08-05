@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Career Plans" icon-name="standard:opportunity">
+        <div class="slds-p-around_medium">
+            <template if:true={Plan}>
+                <lightning-datatable key-field="Id" data={Plan} columns={columns}></lightning-datatable>
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

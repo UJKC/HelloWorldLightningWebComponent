@@ -96,4 +96,13 @@ public with sharing class EmployeeController {
         }
     }
 
+    @AuraEnabled(cacheable = true)
+    public static List<Career_Plan__c> GetCareerPlanByEmpId(String empId) {
+        try {
+            list<Career_Plan__c> cp = [SELECT Id, Name, Target_Role__c, Target_Date__c, Status__c FROM Career_Plan__c WHERE Employee__c = :empId];
+            return cp;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
