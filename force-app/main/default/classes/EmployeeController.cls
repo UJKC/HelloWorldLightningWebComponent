@@ -105,4 +105,14 @@ public with sharing class EmployeeController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled(cacheable = true)
+    public static List<Contact> getAllContacts(){
+        try {
+            List<Contact> c = [Select Id, Name, Email, Phone from Contact];
+            return c;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
