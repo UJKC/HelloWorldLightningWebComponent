@@ -115,14 +115,4 @@ public with sharing class EmployeeController {
             throw new AuraHandledException(e.getMessage());
         }
     }
-
-    @AuraEnabled
-    public static List<Employee__c> searchEmployees(String searchTerm){
-        try {
-            String formattedSearchTerm = '%' + String.escapeSingleQuotes(searchTerm) + '%';
-            String query = 'Select Id, Name, Employee_ID__c, Department__c, Job_Role__c from Employee__c where ' + 
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
-    }
 }
