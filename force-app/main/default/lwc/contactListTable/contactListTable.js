@@ -1,5 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import getAllContacts from '@salesforce/apex/EmployeeController.getAllContacts';
+import ThirdPartyAccountLinkKey from '@salesforce/schema/ThirdPartyAccountLink.ThirdPartyAccountLinkKey';
 
 export default class ContactListTable extends LightningElement {
     @track Contacts;
@@ -22,7 +23,7 @@ export default class ContactListTable extends LightningElement {
             this.Contacts = data;
             this.error = undefined;
             console.log('contacts: ', JSON.stringify(this.Contacts, null, 2));
-            
+
             this.totalPages = Math.ceil(data.length / this.pageSize);
             this.AllPage = [];
 
@@ -71,4 +72,29 @@ export default class ContactListTable extends LightningElement {
     get totalPageNumber() {
         return this.totalPages;
     }
+
+    handleSetSize(event) {
+        const newSize = parseInt(event.detail.value, 10);
+
+        if (!isNaN(newSize) && newSize > 0) {
+            this.pageSize = newSize;
+            this.rebuildPages(); // REBUILD based on new page size
+        }
+    }
+
+
+    rebuildPages() {
+        if (!this.Contacts || this.Contacts.length === 0) return;
+
+        this.totalPages = Math.ceil(this.Contacts.length / this.pageSize);
+        this.AllPage = [];
+
+        for (let i = 0; i < this.Contacts.length; i += this.pageSize) {
+            this.AllPage.push(this.Contacts.slice(i, i + this.pageSize));
+        }
+
+        // Always reset to first page when changing size
+        this.setPage(1);
+    }
+
 }

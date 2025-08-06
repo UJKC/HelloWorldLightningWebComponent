@@ -1,19 +1,15 @@
 <template>
     <lightning-card title="Card List" icon-name="standard:contact">
+        <lightning-input type="number" label="Pagination Size" onchange={handleSetSize}></lightning-input>
+
+
         <template if:true={perPage}>
-            <lightning-datatable
-                key-field="Id"
-                data={perPage}
-                columns={columns}
-                hide-checkbox-column>
+            <lightning-datatable key-field="Id" data={perPage} columns={columns} hide-checkbox-column>
             </lightning-datatable>
 
             <!-- Pagination Controls -->
             <div class="slds-m-top_medium slds-align_absolute-center">
-                <lightning-button
-                    label="Previous"
-                    onclick={handlePrev}
-                    disabled={disablePrev}
+                <lightning-button label="Previous" onclick={handlePrev} disabled={disablePrev}
                     class="slds-m-horizontal_x-small">
                 </lightning-button>
 
@@ -21,10 +17,7 @@
                     Page {currentPageNumber} of {totalPageNumber}
                 </span>
 
-                <lightning-button
-                    label="Next"
-                    onclick={handleNext}
-                    disabled={disableNext}
+                <lightning-button label="Next" onclick={handleNext} disabled={disableNext}
                     class="slds-m-horizontal_x-small">
                 </lightning-button>
             </div>
