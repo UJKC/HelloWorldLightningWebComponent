@@ -116,10 +116,21 @@ public with sharing class EmployeeController {
         }
     }
 
-    @AuraEnabled
-    public static List<Account> getAccounts(){
+    @AuraEnabled(cacheable=true)
+    public static list<account> getAccountDetails(){
         try {
-            return [SELECT Id, Name FROM Account];
+            return [select id, name from Account];
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+    
+    @AuraEnabled(cacheable=true)
+    public static map<string,list<sObject>> grco(string employeeId){
+        try {
+            list<contact> c=[select id, name,email,phone from contact where accountid=:employeeId];
+            list<Opportunity> opp=[select id,name,stageName,Amount,CloseDate from Opportunity where accountid=:employeeId];
+            return new map<string,list<sobject>>{'contacts'=>c,'opportunities'=>opp};
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
