@@ -8,4 +8,9 @@ export default class Numerator extends LightningElement {
     handleDecrement() {
       this.counter--;
     }
+
+    handleMultiply(event) {
+      const factor = event.detail;
+      this.counter *= factor;
+    }
 }
