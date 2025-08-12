@@ -4,6 +4,7 @@
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
+      "enableLightningPreviewPref": true,
       "enableS1DesktopEnabled": true
     },
     "mobileSettings": {
