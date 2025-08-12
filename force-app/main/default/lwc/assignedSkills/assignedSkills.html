@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Assigned Skills" icon-name="custom:custom65">
+    <div class="slds-p-around-medium">
+    <lightning-datatable
+                    key-field="Id"
+                    data={skills}
+                    columns={columns}
+                    hide-checkbox-column
+                    onrowaction={handleRowAction}>
+    </lightning-datatable>
+    </div>
+    </lightning-card>
+    </template>

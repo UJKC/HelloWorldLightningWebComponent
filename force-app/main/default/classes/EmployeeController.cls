@@ -150,4 +150,17 @@ public with sharing class EmployeeController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled(cacheable=true)
+public static List<Employee_Skill__c> getskills(String recordId) {
+    try {
+        return [
+            select Id,Skill__r.Name, Proficiency_Level__c, Last_Assessed__c 
+            from Employee_Skill__c  
+            where Employee__c = :recordId order by Skill__r.Name ASC
+        ];
+    } catch (Exception e) {
+        throw new AuraHandledException(e.getMessage());
+    }
+}
 }
