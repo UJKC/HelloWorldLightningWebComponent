@@ -1,6 +1,6 @@
 <template>
     <lightning-input label="Performance Review Name" value={PR} onchange={onChangeInput} name="PR" required="true"></lightning-input>
-    <lightning-input label="Performance Review Period" value={PRP} onchange={onChangeInput} name="PRP"></lightning-input>
+    <lightning-combobox label="Performance Review Period" value={PRP} onchange={onChangeInput} name="PRP" options={option}></lightning-combobox>
     <lightning-input type="Number" label="Performance Review Rating" value={PRR} onchange={onChangeInput} name="PRR"></lightning-input>
     <lightning-input label="Performance Review Comment" value={PRC} onchange={onChangeInput} name="PRC"></lightning-input>
     <lightning-button onclick={Save} label="Save?"></lightning-button>

@@ -8,6 +8,14 @@ export default class PerformanceReviewFormActualTry extends LightningElement {
     @track PRC
     @api recordId
 
+    option = [
+        {label: 'Q1', value: 'Q1'},
+        {label: 'Q2', value: 'Q2'},
+        {label: 'Q3', value: 'Q3'},
+        {label: 'Q4', value: 'Q4'},
+        {label: 'Annual', value: 'Annual'},
+    ]
+
     onChangeInput(event) {
         let name = event.target.name;
         if (name == "PR") {
