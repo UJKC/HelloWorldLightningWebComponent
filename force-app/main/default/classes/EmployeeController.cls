@@ -135,4 +135,19 @@ public with sharing class EmployeeController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static void savePR(String PR, String PRP, Integer PRR, String PRC, String id){
+        try {
+            Performance_Review__c p = new Performance_Review__c();
+            p.Name = PR;
+            p.Comments__c = PRC;
+            p.Employee__c = id;
+            p.Rating__c = PRR;
+            p.Review_Period__c = PRP;
+            insert p;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
