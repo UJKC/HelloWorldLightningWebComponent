@@ -1,0 +1,14 @@
+<template>
+    <template if:true={errors}>
+      <template for:each={errors} for:item="err">
+        <p key={err}>{err}</p>
+      </template>
+    </template>
+  
+    <lightning-datatable
+      data={contactList}
+      columns={columns}
+      key-field="Id">
+    </lightning-datatable>
+  </template>
+  
