@@ -1,0 +1,18 @@
+<template>
+    <lightning-record-edit-form
+        object-api-name="Employee_Training__c"
+        onsubmit={handleSubmit}
+    >
+        <lightning-input-field
+            field-name="Training__c"
+            onchange={handleChange}>
+        </lightning-input-field>
+
+        <lightning-input-field
+            field-name="Status__c"
+            onchange={handleChange}>
+        </lightning-input-field>
+
+        <lightning-button type="submit" label="Save" variant="brand"></lightning-button>
+    </lightning-record-edit-form>
+</template>
