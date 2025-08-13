@@ -10,7 +10,7 @@ import EMPLOYEE_NAME_FIELD from '@salesforce/schema/Employee__c.Name';
 import getTrainingName from '@salesforce/apex/TrainingHelper.getTrainingName';
 
 export default class trainingEnrollmentForm extends LightningElement {
-    @api recordId; // Employee Id from page
+    @api recordId;
     trainingId;
     statusValue;
     employeeName;
@@ -47,7 +47,5 @@ export default class trainingEnrollmentForm extends LightningElement {
             apiName: EMPLOYEE_TRAINING_OBJECT.objectApiName,
             fields
         });
-
-        // Optionally show toast
     }
 }
