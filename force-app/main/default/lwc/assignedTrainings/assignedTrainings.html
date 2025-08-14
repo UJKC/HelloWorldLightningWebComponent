@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Assigned Trainings">
+        <template if:true={skills}>
+            <lightning-datatable
+                columns={columns}
+                data={skills}
+                key-field="Id">
+            </lightning-datatable>
+        </template>
+        <template if:true={error}>
+            <p>Error loading trainings: {error.body.message}</p>
+        </template>
+    </lightning-card>
+</template>
