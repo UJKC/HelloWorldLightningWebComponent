@@ -1,0 +1,8 @@
+<template>
+    <lightning-record-edit-form object-api-name="Feedback__c" onsubmit={handleSubmit}>
+        <lightning-input-field field-name="Submitted_By__c" required onchange={handleInput}></lightning-input-field>
+        <lightning-input-field field-name="Content__c" onchange={handleInput}></lightning-input-field>
+        <lightning-input-field field-name="Sentiment__c" required onchange={handleInput}></lightning-input-field>
+        <lightning-button type="submit" label="Save" variant="brand"></lightning-button>
+    </lightning-record-edit-form>
+</template>
