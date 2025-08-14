@@ -11,7 +11,6 @@ export default class FeedbackForm extends LightningElement {
     @track Name;
     @track error;
 
-    // Get the Employee record once
     @wire(getRecord, { recordId: '$recordId', fields: [NAME_FIELD] })
     wiredEmployee({ error, data }) {
         if (data) {
@@ -47,9 +46,6 @@ export default class FeedbackForm extends LightningElement {
         createRecord({
             apiName: "Feedback__c",
             fields
-        })
-        .then(() => {
-            // success handling
         })
         .catch(error => {
             this.error = error;
