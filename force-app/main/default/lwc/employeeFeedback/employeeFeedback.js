@@ -1,8 +1,5 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
-import CONTENT_FIELD from '@salesforce/schema/Feedback__c.Content__c';
-import SENTIMENT_FIELD from '@salesforce/schema/Feedback__c.Sentiment__c';
-import FEEDBACK_DATE_FIELD from '@salesforce/schema/Feedback__c.Feedback_Date__c';
 
 export default class EmployeeFeedback extends LightningElement {
     @track Sentiment;
